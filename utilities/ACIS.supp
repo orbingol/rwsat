@@ -1,0 +1,26 @@
+{
+	SpaACIS-Param_flags
+	Memcheck:Param
+	rt_sigaction(act->sa_flags)
+	...
+	obj:/opt/acis_r26sp1/linux_a64/code/bin/libSpaACIS.so
+}
+{
+	SpaACIS-Param_mask
+	Memcheck:Param
+	rt_sigaction(act->sa_mask)
+	...
+	obj:/opt/acis_r26sp1/linux_a64/code/bin/libSpaACIS.so
+}
+{
+	SpaACIS-Cond
+	Memcheck:Cond
+	...
+	obj:/opt/acis_r26sp1/linux_a64/code/bin/libSpaACIS.so
+}
+{
+	SpaACIS-Leak
+	Memcheck:Leak
+	...
+	obj:/opt/acis_r26sp1/linux_a64/code/bin/libSpaACIS.so
+}

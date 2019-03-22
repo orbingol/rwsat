@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?> 
+
+<!-- ACIS visualizers for Visual Studio 20xx -->
+<!-- Put them into My Documents/Visual Studio 20xx/Visualizers/ -->
+
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+  <Type Name="SPAposition">
+    <DisplayString>[{coord[0],g}, {coord[1],g}, {coord[2],g}]</DisplayString>
+    <Expand>
+      <Item Name="[x]">coord[0]</Item>
+      <Item Name="[y]">coord[1]</Item>
+      <Item Name="[z]">coord[2]</Item>
+    </Expand>
+  </Type>
+  <Type Name="SPAunit_vector">
+    <DisplayString>[{comp[0],g}, {comp[1],g}, {comp[2],g}]</DisplayString>
+    <Expand>
+      <Item Name="[x]">comp[0]</Item>
+      <Item Name="[y]">comp[1]</Item>
+      <Item Name="[z]">comp[2]</Item>
+    </Expand>
+  </Type>
+  <Type Name="SPAvector">
+    <DisplayString>[{comp[0],g}, {comp[1],g}, {comp[2],g}]</DisplayString>
+    <Expand>
+      <Item Name="[x]">comp[0]</Item>
+      <Item Name="[y]">comp[1]</Item>
+      <Item Name="[z]">comp[2]</Item>
+    </Expand>
+  </Type>
+</AutoVisualizer>
