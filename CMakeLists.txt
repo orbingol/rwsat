@@ -19,10 +19,10 @@ set(CMAKE_CXX_STANDARD 11)
 SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 # Set install directory
-set(APP_INSTALL_DIR ${PROJECT_BINARY_DIR}/install CACHE PATH "Application install directory")
-set(CMAKE_INSTALL_PREFIX ${APP_INSTALL_DIR})
+set(RWSAT_INSTALL_DIR ${PROJECT_BINARY_DIR}/install CACHE PATH "Application install directory")
+set(CMAKE_INSTALL_PREFIX ${RWSAT_INSTALL_DIR})
 
-set(APP_BUILD_GEN OFF CACHE BOOL "Build SAT file generator")
+set(RWSAT_BUILD_SATGEN OFF CACHE BOOL "Build satgen")
 
 # Find ACIS headers and libraries
 find_package(ACIS REQUIRED)
@@ -35,7 +35,7 @@ else()
 endif()
 
 # Set source files
-set(SRC_FILES
+set(SOURCE_FILES_RWSAT
   src/ACIS.h
   src/json/json.h
   src/json/json-forwards.h
@@ -48,19 +48,19 @@ set(SRC_FILES
 )
 
 # Create the executable
-add_executable(rwsat ${SRC_FILES})
+add_executable(rwsat ${SOURCE_FILES_RWSAT})
 target_link_libraries(rwsat ${ACIS_LINK_LIBRARIES})
 set_target_properties(rwsat PROPERTIES DEBUG_POSTFIX "_d")
 
 # Install the binary
 install(
   TARGETS rwsat
-  DESTINATION ${APP_INSTALL_DIR}
+  DESTINATION ${RWSAT_INSTALL_DIR}
 )
 
-if(APP_BUILD_GEN)
+if(RWSAT_BUILD_SATGEN)
   # Set source files for the generator application
-  set(GEN_SRC_FILES
+  set(SOURCE_FILES_SATGEN
     src/ACIS.h
     src/common.h
     src/common.cpp
@@ -68,28 +68,28 @@ if(APP_BUILD_GEN)
   )
 
   # Create the executable for the generator application
-  add_executable(satgen ${GEN_SRC_FILES})
+  add_executable(satgen ${SOURCE_FILES_SATGEN})
   target_link_libraries(satgen ${ACIS_LINK_LIBRARIES})
   set_target_properties(satgen PROPERTIES DEBUG_POSTFIX "_d")
   
   # Install the generator application
   install(
     TARGETS satgen
-    DESTINATION ${APP_INSTALL_DIR}
+    DESTINATION ${RWSAT_INSTALL_DIR}
   )
-endif(APP_BUILD_GEN)
+endif(RWSAT_BUILD_SATGEN)
 
-# On Windows, it might be good to copy required DLL files into the module directory
+# On Windows, it would be wise copy required DLL files into the app directory
 if(MSVC)
   install(
       FILES ${ACIS_REDIST_RELEASE}
-      DESTINATION ${APP_INSTALL_DIR}/${APP_MODULE_NAME}
+      DESTINATION ${RWSAT_INSTALL_DIR}
       CONFIGURATIONS Release RelWithDebInfo MinSizeRel
   )
 
   install(
       FILES ${ACIS_REDIST_DEBUG}
-      DESTINATION ${APP_INSTALL_DIR}/${APP_MODULE_NAME}
+      DESTINATION ${RWSAT_INSTALL_DIR}
       CONFIGURATIONS Debug
   )
 endif()
