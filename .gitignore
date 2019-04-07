@@ -1,4 +1,5 @@
-build/
-.vscode/
+.idea/*
+.vscode/*
+build*/*
 *.sat
 *.err
