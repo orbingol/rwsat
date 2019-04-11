@@ -35,7 +35,7 @@ else()
 endif()
 
 # Set source files
-set(SOURCE_FILES_RWSAT
+set(SOURCE_FILES_SAT2JSON
   src/ACIS.h
   src/json/json.h
   src/json/json-forwards.h
@@ -44,17 +44,17 @@ set(SOURCE_FILES_RWSAT
   src/common.cpp
   src/extract.h
   src/extract.cpp
-  src/main.cpp
+  src/sat2json.cpp
 )
 
 # Create the executable
-add_executable(rwsat ${SOURCE_FILES_RWSAT})
-target_link_libraries(rwsat ${ACIS_LINK_LIBRARIES})
-set_target_properties(rwsat PROPERTIES DEBUG_POSTFIX "_d")
+add_executable(sat2json ${SOURCE_FILES_SAT2JSON})
+target_link_libraries(sat2json ${ACIS_LINK_LIBRARIES})
+set_target_properties(sat2json PROPERTIES DEBUG_POSTFIX "_d")
 
 # Install the binary
 install(
-  TARGETS rwsat
+  TARGETS sat2json
   DESTINATION ${RWSAT_INSTALL_DIR}
 )
 
@@ -64,7 +64,7 @@ if(RWSAT_BUILD_SATGEN)
     src/ACIS.h
     src/common.h
     src/common.cpp
-    src/main_gen.cpp
+    src/satgen.cpp
   )
 
   # Create the executable for the generator application
