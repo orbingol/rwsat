@@ -1,8 +1,11 @@
-# RWSAT - ACIS Geometry Extractor
+# RWSAT - ACIS Extensions for NURBS-Python (geomdl)
 
-This repository contains `rwsat`, a command-line application to extract spline
-geometries and trim curves from ACIS .SAT files. `rwsat` is based on the work
-of [Dr. Adarsh Krishnamurthy](https://www.me.iastate.edu/faculty/profile/adarsh)
+This repository contains the `rwsat` project and it contains 2 modules
+
+* `sat2json` for extracting spline geometries and trim curves from ACIS .SAT files
+* `satgen` for generating sample geometries to test `sat2json`
+
+The `rwsat` project is based on the work of [Dr. Adarsh Krishnamurthy](https://www.me.iastate.edu/faculty/profile/adarsh)
 with various improvements and new features.
 
 ## Requirements
@@ -20,10 +23,12 @@ with various improvements and new features.
 
 ## Using RWSAT
 
-The most easiest way to use `rwsat` is as follows:
+### sat2json
+
+The simplest way to use `sat2json` is as follows:
 
 ```
-$ rwsat MODEL.sat licence_file=license.dat
+$ sat2json MODEL.sat licence_file=license.dat
 ```
 
 This command will convert `MODEL.sat` into a JSON file which is directly readable by
@@ -34,7 +39,18 @@ source file at the following location:
 
 ![ACIS license key location](.github/acis_licensekey.jpg "You can find your license key here")
 
-Run `rwsat` without any command-line arguments for more details on using the application.
+Run `sat2json` without any command-line arguments for more details on using the application.
+
+### satgen
+
+The simplest way to use `satgen` is as follows:
+
+```
+$ satgen SAMPLE.sat licence_file=license.dat
+```
+
+The arguments are very similar to `sat2json` command. Please note that the `SAMPLE.sat` file
+is the output of the `satgen` command.
 
 ## Author
 
