@@ -12,11 +12,14 @@ if(MSVC)
   add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 endif()
 
+# Set runtime path
+SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
 # Use C++11
 set(CMAKE_CXX_STANDARD 11)
 
-# Set RPATH
-SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+# Add 3rd party libraries
+add_subdirectory(3rdparty)
 
 # Set install directory
 set(RWSAT_INSTALL_DIR ${PROJECT_BINARY_DIR}/install CACHE PATH "Application install directory")
@@ -37,9 +40,6 @@ endif()
 # Set source files
 set(SOURCE_FILES_SAT2JSON
   src/ACIS.h
-  src/json/json.h
-  src/json/json-forwards.h
-  src/jsoncpp.cpp
   src/common.h
   src/common.cpp
   src/extract.h
@@ -49,7 +49,7 @@ set(SOURCE_FILES_SAT2JSON
 
 # Create the executable
 add_executable(sat2json ${SOURCE_FILES_SAT2JSON})
-target_link_libraries(sat2json ${ACIS_LINK_LIBRARIES})
+target_link_libraries(sat2json jsoncpp ${ACIS_LINK_LIBRARIES})
 set_target_properties(sat2json PROPERTIES DEBUG_POSTFIX "_d")
 
 # Install the binary
