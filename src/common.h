@@ -53,11 +53,11 @@ struct Config {
         { "license_key", { "", "ACIS unlock key" } },
         { "acis_warnings", { "0", "Enable ACIS warnings" } },
         { "warnings", { "0", "Enable application warnings" } },
-        { "normalize", { "1", "Normalize knot vectors and rescale trim curves" } },
+        { "normalize", { "1", "Normalize knot vectors and and scale trim curves to [0,1] domain" } },
         { "trims", { "1", "Extract trim curves" } },
-        { "sense", { "1", "Extract surface and trim curve sense data" } },
+        { "sense", { "1", "Extract surface and trim curve direction w.r.t. the face" } },
         { "transform", { "0", "Apply transforms" } },
-        {  "bspline", { "1", "Convert the underlying geometry to B-Spline" } }
+        { "bspline", { "1", "Convert the underlying geometry to B-Spline" } }
     };
 
     // Methods
