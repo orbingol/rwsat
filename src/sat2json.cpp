@@ -34,7 +34,8 @@ int main(int argc, char **argv)
 {
     // Print app information
     std::cout << "SAT2JSON: Spline Geometry Extractor for ACIS" << std::endl;
-    std::cout << "Copyright (c) 2019 IDEA Lab at Iowa State University. " << "Licensed under the terms of BSD License.\n" << std::endl;
+    std::cout << "Copyright (c) 2019 IDEA Lab at Iowa State University." << std::endl;
+    std::cout << "Licensed under the terms of BSD License.\n" << std::endl;
 
     // File name to read
     std::string filename;
