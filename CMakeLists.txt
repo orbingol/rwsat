@@ -50,7 +50,7 @@ set(SOURCE_FILES_SAT2JSON
 # Create the executable
 add_executable(sat2json ${SOURCE_FILES_SAT2JSON})
 target_link_libraries(sat2json jsoncpp ${ACIS_LINK_LIBRARIES})
-set_target_properties(sat2json PROPERTIES DEBUG_POSTFIX "_d")
+set_target_properties(sat2json PROPERTIES DEBUG_POSTFIX "d")
 
 # Install the binary
 install(
@@ -70,7 +70,7 @@ if(RWSAT_BUILD_SATGEN)
   # Create the executable for the generator application
   add_executable(satgen ${SOURCE_FILES_SATGEN})
   target_link_libraries(satgen ${ACIS_LINK_LIBRARIES})
-  set_target_properties(satgen PROPERTIES DEBUG_POSTFIX "_d")
+  set_target_properties(satgen PROPERTIES DEBUG_POSTFIX "d")
   
   # Install the generator application
   install(
