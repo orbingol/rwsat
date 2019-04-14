@@ -202,7 +202,7 @@ int main(int argc, char **argv)
 
             // Extract spline surface data
             Json::Value surfDef;
-            surfDef["sense"] = faceSense;
+            surfDef["reversed"] = faceSense;
             extractSurfaceData(bsurf, cfg, surfDef);
 
             /*** TRIM CURVE EXTRACTION ***/
@@ -276,7 +276,7 @@ int main(int argc, char **argv)
 
                         // Extract trim curve data to the JSON object
                         Json::Value curveDef;
-                        curveDef["sense"] = coedgeSense;
+                        curveDef["reversed"] = coedgeSense;
                         extractTrimCurveData(bcurve2d, cfg, surf_param_offset, surf_param_len, curveDef);
 
                         // Add trim curve to the parent JSON object
@@ -289,7 +289,7 @@ int main(int argc, char **argv)
                     tDataDataDef["data"] = tCurvesDataDef;
                     tDataDataDef["loop_type"] = currLoopType;
                     if (trimSense >= 0 && cfg.trims())
-                        tDataDataDef["sense"] = trimSense;
+                        tDataDataDef["reversed"] = trimSense;
                     tDataDef[lid] = tDataDataDef;
                 }
 
