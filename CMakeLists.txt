@@ -25,7 +25,9 @@ add_subdirectory(3rdparty)
 set(RWSAT_INSTALL_DIR ${PROJECT_BINARY_DIR}/install CACHE PATH "Application install directory")
 set(CMAKE_INSTALL_PREFIX ${RWSAT_INSTALL_DIR})
 
-set(RWSAT_BUILD_SATGEN OFF CACHE BOOL "Build satgen")
+# Options
+set(RWSAT_BUILD_SATGEN OFF CACHE BOOL "Build and install satgen")
+set(RWSAT_INSTALL_DLL ON CACHE BOOL "Install SpaACIS.dll file alongside with the executables")
 
 # Find ACIS headers and libraries
 find_package(ACIS REQUIRED)
@@ -80,7 +82,7 @@ if(RWSAT_BUILD_SATGEN)
 endif(RWSAT_BUILD_SATGEN)
 
 # On Windows, it would be wise copy required DLL files into the app directory
-if(MSVC)
+if(MSVC AND ${RWSAT_INSTALL_DLL})
   install(
       FILES ${ACIS_REDIST_RELEASE}
       DESTINATION ${RWSAT_INSTALL_DIR}
